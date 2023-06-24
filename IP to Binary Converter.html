@@ -114,7 +114,7 @@
         <h1>تبدیل کننده آی پی به باینری</h1>
         <!-- IP input field and action buttons -->
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <input type="text" id="ip" placeholder="آدرس IP را وارد کنید">
+            <input type="text" id="ip" placeholder="باینریِ IP را وارد کنید">
             <div style="display: flex; gap: 10px; margin-top: 10px;">
                 <button onclick="convertToBinary()">تبدیل</button>
                 <button onclick="showAnalysis()">تحلیل</button>
@@ -387,12 +387,12 @@
             var randomIP = generateRandomIPForQuiz();
             quizIP = getBinaryFromIP(randomIP);
 
-            document.getElementById('quiz').innerHTML = '<div class="quizTitle">تبدیل آدرس IP زیر به باینری:</div><div class="quizContent">' + randomIP + '<input id="quizInput" type="text" placeholder="آدرس IP را وارد کنید"><button onclick="checkQuiz()">محاسبه</button><button onclick="document.getElementById(\'quizInput\').value = \'' + quizIP + '\'">نمایش</button></div>';
+            document.getElementById('quiz').innerHTML = '<div class="quizTitle">تبدیل آدرس IP زیر به باینری:</div><div class="quizContent">' + randomIP + '<input id="quizInput" type="text" placeholder="باینریِ IP را وارد کنید"><button onclick="checkQuiz()">محاسبه</button><button onclick="document.getElementById(\'quizInput\').value = \'' + quizIP + '\'">نمایش</button></div>';
 
             var randomBinary = generateRandomBinaryForQuiz();
             quizBinary = getIPFromBinary(randomBinary);
 
-            document.getElementById('quizBinary').innerHTML = '<div class="quizTitle">تبدیل باینری زیر به آدرس IP:</div><div class="quizContent">' + randomBinary + '<input id="quizInputBinary" type="text" placeholder="باینری را وارد کنید"><button onclick="checkQuizBinary()">محاسبه</button><button onclick="document.getElementById(\'quizInputBinary\').value = \'' + quizBinary + '\'">نمایش</button></div>';
+            document.getElementById('quizBinary').innerHTML = '<div class="quizTitle">تبدیل باینری زیر به آدرس IP:</div><div class="quizContent">' + randomBinary + '<input id="quizInputBinary" type="text" placeholder="آی پی را وارد کنید"><button onclick="checkQuizBinary()">محاسبه</button><button onclick="document.getElementById(\'quizInputBinary\').value = \'' + quizBinary + '\'">نمایش</button></div>';
         }
 
         // Function to generate a random IP address for the quiz
