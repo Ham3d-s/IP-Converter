@@ -2,6 +2,8 @@
 
 The IP to Binary Converter is a web application that allows users to convert IPv4 addresses into their binary representation. It provides a user-friendly interface and various analysis features related to IP addresses.
 
+![Screenshot](screenshots.jpg)
+
 ## Try the Demo
 
 Click [here](http://ipchanger.fun) to access the interactive demo and test the IP to Binary Converter.
