@@ -52,19 +52,13 @@ The IP to Binary Converter should work in most modern web browsers with JavaScri
 
 The following are potential improvements and features that can be considered for future versions of the IP to Binary Converter:
 
-1. **Enhanced Error Handling:** Improve error handling for invalid input and provide informative error messages to users. For example, if an invalid IP address format is entered, display a clear error message indicating the issue.
-
-2. **IPv6 Support:** Extend the converter to support IPv6 addresses and their binary representation. This will enable users to convert both IPv4 and IPv6 addresses seamlessly.
-
-3. **User-Friendly Interface:** Enhance the user interface to provide a more intuitive and visually appealing experience. Consider implementing responsive design principles to ensure the application works well on different devices and screen sizes.
-
-4. **Additional Analysis:** Add more analysis features to provide users with comprehensive information about the IP addresses. For example, identify the network class based on the subnet mask or detect private IP addresses.
-
-5. **Conversion History:** Implement a conversion history feature that allows users to view and recall previously converted IP addresses. This will provide convenience and allow users to keep track of their conversions.
-
-6. **Localization:** Add support for multiple languages, allowing users to use the application in their preferred language. Provide language selection options and translate the user interface and messages into different languages.
-
-7. **Performance Optimization:** Optimize the code and algorithms to improve the performance and efficiency of the converter. Identify and eliminate any bottlenecks that may affect the conversion speed, especially when handling large volumes of data.
+- [ ] Enhanced Error Handling: Improve error handling for invalid input and provide informative error messages to users.
+- [ ] IPv6 Support: Extend the converter to support IPv6 addresses and their binary representation.
+- [ ] User-Friendly Interface: Enhance the user interface to provide a more intuitive and visually appealing experience.
+- [ ] Additional Analysis: Add more analysis features, such as identifying the network class based on the subnet mask or detecting private IP addresses.
+- [ ] Conversion History: Implement a conversion history feature that allows users to view and recall previously converted IP addresses.
+- [ ] Localization: Add support for multiple languages, allowing users to use the application in their preferred language.
+- [ ] Performance Optimization: Optimize the code and algorithms to improve the performance and efficiency of the converter.
 
 These are just a few ideas to further enhance the IP to Binary Converter. Contributions and suggestions are highly appreciated! If you have any ideas or would like to contribute to the project, feel free to open an issue or submit a pull request. Let's make this converter even better together!
 
