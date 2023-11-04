@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="fa">
 <head>
-    <title>تبدیل کننده آی پی به باینری</title>
+    <meta charset="UTF-8">
+    <title>تبدیل کننده آی‌پی به باینری</title>
+
     <!-- CSS Styles -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
-        rel="stylesheet" type="text/css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQ1eKb1D/KShfHiFhOI7KwR2/AP7af4I91cvNLMYYZSY3e3fEsvh8GCyyvi5" crossorigin="anonymous">
+
+    <!-- Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+</html>
+
     <style>
         /* Styling for the body */
         body {
@@ -13,7 +27,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: 'Vazir Matn', Arial, sans-serif;
+            font-family: 'Vazirmatn', sans-serif;
             background-color: #000000;
             color: #333;
         }
@@ -48,7 +62,7 @@
         button {
             padding: 10px 20px;
             font-size: 19px;
-            background-color: #761ddb;
+            background-color: #000000;
             color: white;
             border: none;
             border-radius: 4px;
@@ -57,7 +71,7 @@
 
         /* Hover style for button */
         button:hover {
-            background-color: #950df0;
+            background-color: #360101;
         }
 
         /* Styling for result and analysis sections */
@@ -105,7 +119,36 @@
         .quizResult {
             margin-top: 10px;
         }
+        
+    .accordion {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border: 1px solid #e1e1e1;
+    }
+
+    .accordion-header {
+        background: #212121;
+        padding: 10px 15px;
+        border: none;
+        width: 100%;
+        text-align: center;  /* Centers the text */
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-family: 'Vazirmatn', sans-serif;  /* Ensures the font matches the rest of your site */
+
+    }
+
+    .accordion-header:hover {
+        background: #360101;
+    }
+
+    .accordion-content img {
+        max-width: 100%;  /* ensures the image doesn't overflow its container */
+        height: auto;  /* maintains the aspect ratio */
+    }
     </style>
+
 </head>
 <body>
     <!-- Converter container -->
@@ -114,14 +157,34 @@
         <h1>تبدیل کننده آی پی به باینری</h1>
         <!-- IP input field and action buttons -->
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <input type="text" id="ip" placeholder="باینریِ IP را وارد کنید">
+            <input type="text" id="ip" placeholder="آی‌پی را وارد کنید یا روی آی‌پی تصادفی بزنید">
             <div style="display: flex; gap: 10px; margin-top: 10px;">
-                <button onclick="convertToBinary()">تبدیل</button>
-                <button onclick="showAnalysis()">تحلیل</button>
-                <button onclick="generateRandomIP()">IP تصادفی</button>
-                <button onclick="startQuiz()">آزمون</button>
-                <button onclick="resetPage()">ریست کردن</button>
-            </div>
+                <button onclick="generateRandomIP()">IP تصادفی
+                    <span class="material-icons" data-toggle="tooltip" data-placement="top" title="ایجاد یک آی‌پی تصادفی جدید">
+                        help
+                    </span>
+                </button>
+                <button onclick="convertToBinary()">تبدیل
+                    <span class="material-icons" data-toggle="tooltip" data-placement="top" title="تبدیل آی‌پی نوشته شده به فرمت باینری">
+                        help
+                    </span>
+                </button>                
+                <button onclick="showAnalysis()">تحلیل
+                    <span class="material-icons" data-toggle="tooltip" data-placement="top" title="نمایش تحلیل و اطلاعات مرتبط با آی‌پی">
+                        help
+                    </span>
+                </button>
+                <button onclick="startQuiz()">آزمون
+                    <span class="material-icons" data-toggle="tooltip" data-placement="top" title=" شروع یک آزمون برای تبدیل آی‌پی به باینری یا بالعکس">
+                        help
+                    </span>
+                </button>
+                <button onclick="resetPage()">ریست کردن
+                    <span class="material-icons" data-toggle="tooltip" data-placement="top" title="پاک کردن تمامی اطلاعات و بازگشت به حالت اولیه">
+                        help
+                    </span>
+                </button>
+                                            </div>
         </div>
         <!-- Result section heading -->
         <h2>نمایش خروجی باینری:</h2>
@@ -132,13 +195,22 @@
         <!-- Display the step-by-step calculations -->
         <div id="steps"></div>
         <!-- Math steps section heading -->
-        <h2>مراحل محاسبات ریاضی:</h2>
+        <h2>مراحل ریاضی محاسبات :</h2>
         <!-- Display the mathematical calculations -->
         <div id="mathSteps"></div>
         <!-- IP analysis section heading -->
         <h2>تحلیل IP:</h2>
         <!-- Display the IP analysis results -->
         <div id="ipAnalysis"></div>
+        <div class="accordion">
+            <button class="accordion-header">
+                توضیح در ارتباط با بخش تحلیل آی‌پی
+            </button>
+            <div class="accordion-content">
+                <img src="https://s6.uupload.ir/files/2023-11-02_04-45_ebgf.png" alt="Description of image">
+                <p></p>
+            </div>
+                    </div>     
         <!-- Quiz sections for IP and binary conversion -->
         <div id="quiz"></div>
         <div id="quizResult" class="quizResult"></div>
@@ -473,7 +545,7 @@
             var numberOfHostsResult = getNumberOfHosts(firstOctet);
 
             var ipAnalysisDiv = document.getElementById('ipAnalysis');
-            ipAnalysisDiv.innerHTML = '<table><tr><th>کلاس IP</th><th>Net ID</th><th>Host ID</th><th>NN</th><th>BA</th><th>Subnet Mask</th><th>Net Worth</th><th>تعداد شبکه‌ها</th><th>تعداد میزبان‌ها</th></tr><tr><td>' + classResult + '</td><td>' + netIDResult + '</td><td>' + hostIDResult + '</td><td>' + nnResult + '</td><td>' + baResult + '</td><td>' + subnetMaskResult + '</td><td>' + netWorthResult + '</td><td>' + numberOfNetworksResult + '</td><td>' + numberOfHostsResult + '</td></tr></table>';
+            ipAnalysisDiv.innerHTML = '<table><tr><th>کلاس IP</th><th>Net ID</th><th>Host ID</th><th>NN</th><th>BA</th><th>Subnet Mask</th><th>Net Value</th><th>تعداد شبکه‌ها</th><th>تعداد میزبان‌ها</th></tr><tr><td>' + classResult + '</td><td>' + netIDResult + '</td><td>' + hostIDResult + '</td><td>' + nnResult + '</td><td>' + baResult + '</td><td>' + subnetMaskResult + '</td><td>' + netWorthResult + '</td><td>' + numberOfNetworksResult + '</td><td>' + numberOfHostsResult + '</td></tr></table>';
         }
 
         // Function to convert IP address to binary
@@ -509,7 +581,40 @@
 
             return ipParts.join('.');
         }
-    </script>
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+        const header = document.querySelector('.accordion-header');
+        const content = header.nextElementSibling;
+        content.style.display = 'none';  // This line ensures the content is hidden when the page loads
+        header.addEventListener('click', function() {
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
+
+    <body style="padding-bottom: 80px;">
+        
+<footer style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px;">
+    <p>₿ این پروژه اُپن سورس است و برای تفریح و آموزش ساخته شده ₿ <a href="https://github.com/Ham3d-s/IP-Converter" target="_blank">GitHub</a>.</p>
+    <div>
+        <a href="https://twitter.com/Ham3ds_" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/Ham3d-s" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/Ham3ds" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>      
+      <style>
+        .fab {
+          font-size: 20px;
+          color: rgb(255, 255, 255);
+          margin-right: 10px;
+        }
+        .fab:hover {
+          color: #f2b21d; /* Change color on hover */
+        }
+        
+      </style>
+      
+    </footer>
+
 </body>
 
 </html>
