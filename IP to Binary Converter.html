@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <title>تبدیل کننده آی‌پی به باینری</title>
 
-    <!-- CSS Styles -->
+    <!-- Include external resources for styling and functionality -->
+    <!-- Preconnect to Google Fonts for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load a specific font for the page -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300&display=swap" rel="stylesheet">
+    <!-- Define the viewport for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Include jQuery UI for UI components -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <!-- Bootstrap RTL CSS -->
+    <!-- Include Bootstrap RTL CSS for styling -->
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQ1eKb1D/KShfHiFhOI7KwR2/AP7af4I91cvNLMYYZSY3e3fEsvh8GCyyvi5" crossorigin="anonymous">
 
-    <!-- Material Icons CSS -->
+    <!-- Include Material Icons CSS for icon fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
-</html>
-
+<body>
+    <!-- CSS Styles for the page -->
     <style>
         /* Styling for the body */
         body {
@@ -119,44 +126,42 @@
         .quizResult {
             margin-top: 10px;
         }
-        
-    .accordion {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        border: 1px solid #e1e1e1;
-    }
 
-    .accordion-header {
-        background: #212121;
-        padding: 10px 15px;
-        border: none;
-        width: 100%;
-        text-align: center;  /* Centers the text */
-        cursor: pointer;
-        transition: background 0.3s ease;
-        font-family: 'Vazirmatn', sans-serif;  /* Ensures the font matches the rest of your site */
+        /* Styling for accordion component */
+        .accordion {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #e1e1e1;
+        }
 
-    }
+        .accordion-header {
+            background: #212121;
+            padding: 10px 15px;
+            border: none;
+            width: 100%;
+            text-align: center;  /* Centers the text */
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Vazirmatn', sans-serif;  /* Ensures the font matches the rest of your site */
+        }
 
-    .accordion-header:hover {
-        background: #360101;
-    }
+        .accordion-header:hover {
+            background: #360101;
+        }
 
-    .accordion-content img {
-        max-width: 100%;  /* ensures the image doesn't overflow its container */
-        height: auto;  /* maintains the aspect ratio */
-    }
+        .accordion-content img {
+            max-width: 100%;  /* ensures the image doesn't overflow its container */
+            height: auto;  /* maintains the aspect ratio */
+        }
 
-    .fab:hover {
-        color: #f2b21d; /* Change color on hover */
-    }
+        .fab:hover {
+            color: #f2b21d; /* Change color on hover */
+        }
 
-    button {
-        font-family: 'Vazirmatn', sans-serif !important;
-    }
-
-
+        button {
+            font-family: 'Vazirmatn', sans-serif !important;
+        }
     </style>
 
 </head>
@@ -167,34 +172,41 @@
         <h1>تبدیل کننده آی پی به باینری</h1>
         <!-- IP input field and action buttons -->
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <!-- Input field for entering IP address -->
             <input type="text" id="ip" placeholder="آی‌پی را وارد کنید یا روی آی‌پی تصادفی بزنید">
+            <!-- Action buttons for generating random IP, converting, showing analysis, starting quiz, and resetting page -->
             <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <!-- Button to generate a random IP address -->
                 <button onclick="generateRandomIP()">IP تصادفی
                     <span class="material-icons" data-toggle="tooltip" data-placement="top" title="ایجاد یک آی‌پی تصادفی جدید">
                         help
                     </span>
                 </button>
+                <!-- Button to convert the entered IP address to binary format -->
                 <button onclick="convertToBinary()">تبدیل
                     <span class="material-icons" data-toggle="tooltip" data-placement="top" title="تبدیل آی‌پی نوشته شده به فرمت باینری">
                         help
                     </span>
                 </button>                
+                <!-- Button to show analysis of the entered IP -->
                 <button onclick="showAnalysis()">تحلیل
                     <span class="material-icons" data-toggle="tooltip" data-placement="top" title="نمایش تحلیل و اطلاعات مرتبط با آی‌پی">
                         help
                     </span>
                 </button>
+                <!-- Button to start a quiz for IP to binary or binary to IP conversion -->
                 <button onclick="startQuiz()">آزمون
                     <span class="material-icons" data-toggle="tooltip" data-placement="top" title=" شروع یک آزمون برای تبدیل آی‌پی به باینری یا بالعکس">
                         help
                     </span>
                 </button>
+                <!-- Button to reset the page and clear all data -->
                 <button onclick="resetPage()">ریست کردن
                     <span class="material-icons" data-toggle="tooltip" data-placement="top" title="پاک کردن تمامی اطلاعات و بازگشت به حالت اولیه">
                         help
                     </span>
                 </button>
-                                            </div>
+            </div>
         </div>
         <!-- Result section heading -->
         <h2>نمایش خروجی باینری:</h2>
@@ -205,22 +217,37 @@
         <!-- Display the step-by-step calculations -->
         <div id="steps"></div>
         <!-- Math steps section heading -->
-        <h2>مراحل ریاضی محاسبات :</h2>
         <!-- Display the mathematical calculations -->
-        <div id="mathSteps"></div>
+        <div id="mathContainer">
+            <h2>مراحل ریاضی محاسبات :</h2>
+            <div id="mathSteps"></div>
+            <!-- Button for toggling explanation of mathematical steps -->
+            <button class="accordion-header">
+                توضیحات مراحل ریاضی
+            </button>  
+            <!-- Content for explaining mathematical steps -->
+            <div class="accordion-content">
+                <img src="https://c440662.parspack.net/c440662//2023-11-06_07-24.png" alt="Description of image">
+                <p></p>
+            </div>
+        </div>
         <!-- IP analysis section heading -->
         <h2>تحلیل IP:</h2>
         <!-- Display the IP analysis results -->
         <div id="ipAnalysis"></div>
+        <!-- Accordion for additional information about IP analysis -->
         <div class="accordion">
+            <!-- Button for toggling explanation of IP analysis -->
             <button class="accordion-header">
                 توضیح در ارتباط با بخش تحلیل آی‌پی
             </button>
+            <!-- Content for explaining IP analysis -->
             <div class="accordion-content">
-                <img src="https://s6.uupload.ir/files/2023-11-02_04-45_ebgf.png" alt="Description of image">
+                <img src="https://c440662.parspack.net/c440662//2023-11-02_04-45.png" alt="Description of image">
+                <img src="https://c440662.parspack.net/c440662//2023-11-04_08-38.png" alt="Description of image">
                 <p></p>
             </div>
-                    </div>     
+        </div>
         <!-- Quiz sections for IP and binary conversion -->
         <div id="quiz"></div>
         <div id="quizResult" class="quizResult"></div>
@@ -228,69 +255,79 @@
         <div id="quizResultBinary" class="quizResult"></div>
     </div>
 
-    <!-- JavaScript code -->
     <script>
+        // Declare variables for quizIP and quizBinary
         var quizIP = '';
         var quizBinary = '';
-
-        // Function to convert IP to binary
+    
+        // Function to convert an IP address to binary
         function convertToBinary() {
+            // Get the entered IP address from the input field
             var ip = document.getElementById('ip').value;
+            // Split the IP address into its octets
             var ipParts = ip.split('.');
+            // Initialize arrays to store binary representations and mathematical steps
             var binaryParts = [];
             var mathSteps = [];
-
-            // Input validation
+    
+            // Input validation: Check if there are exactly 4 octets in the IP address
             if (ipParts.length !== 4) {
                 alert("آدرس IP نامعتبر است. لطفاً یک آدرس IPv4 معتبر وارد کنید.");
                 return;
             }
-
+    
             for (var i = 0; i < ipParts.length; i++) {
                 var part = ipParts[i];
-
+    
+                // Input validation: Check if each octet is a numeric value between 0 and 255
                 if (!isNumeric(part) || part < 0 || part > 255) {
                     alert("آدرس IP نامعتبر است. لطفاً یک آدرس IPv4 معتبر وارد کنید.");
                     return;
                 }
-
+    
+                // Convert each octet to binary and store it in binaryParts
                 var binaryPart = parseInt(part).toString(2);
                 var mathStep = '';
+    
+                // Ensure that binaryPart is 8 bits long by adding leading zeros if necessary
                 while (binaryPart.length < 8) {
                     binaryPart = '0' + binaryPart;
                     mathStep = '0' + mathStep;
                 }
+    
                 binaryParts.push(binaryPart);
                 mathSteps.push(mathStep);
             }
-
+    
+            // Display the binary result in the 'result' div
             var resultDiv = document.getElementById('result');
             resultDiv.innerHTML = binaryParts.join('.');
-
+    
+            // Clear the 'steps' and 'mathSteps' divs
             var stepsDiv = document.getElementById('steps');
             stepsDiv.innerHTML = '';
-
             var mathStepsDiv = document.getElementById('mathSteps');
             mathStepsDiv.innerHTML = '';
-
+    
+            // Create an HTML table to display mathematical steps
             var tableHTML = '<table><tr><th>عدد اعشاری</th><th>فرآیند تبدیل به باینری</th><th>عدد باینری</th></tr>';
-
+    
             for (var i = 0; i < ipParts.length; i++) {
                 stepsDiv.innerHTML += 'عدد ' + ipParts[i] + ' به باینری ' + binaryParts[i] + ' تبدیل می‌شود<br>';
                 var process = calculateProcess(ipParts[i]);
                 tableHTML += '<tr><td>' + ipParts[i] + '</td><td>' + process + '</td><td>' + binaryParts[i] + '</td></tr>';
             }
-
+    
             tableHTML += '</table>';
             mathStepsDiv.innerHTML = tableHTML;
         }
-
+    
         // Function to calculate the binary conversion process
         function calculateProcess(decimal) {
             var powers = [128, 64, 32, 16, 8, 4, 2, 1];
             var binaryConversionProcess = '';
             var remainder = decimal;
-
+    
             for (var i = 0; i < powers.length; i++) {
                 if (remainder >= powers[i]) {
                     binaryConversionProcess += powers[i] + '-' + remainder + '=' + (remainder - powers[i]) + ' (1)، ';
@@ -299,11 +336,12 @@
                     binaryConversionProcess += '0، ';
                 }
             }
-
+    
+            // Remove the trailing comma and space from the result
             return binaryConversionProcess.slice(0, -2);
         }
-
-        // Function to get the class of the IP address
+    
+        // Function to determine the class of the IP address
         function getClass(firstOctet) {
             if (firstOctet >= 1 && firstOctet <= 126) {
                 return 'A';
@@ -319,11 +357,11 @@
                 return 'Invalid';
             }
         }
-
-        // Function to get the network ID
+    
+        // Function to get the network ID of the IP address
         function getNetID(firstOctet, ipParts) {
             var netIDParts = [];
-
+    
             if (firstOctet >= 1 && firstOctet <= 126) {
                 netIDParts.push(ipParts[0]);
             } else if (firstOctet >= 128 && firstOctet <= 191) {
@@ -333,14 +371,14 @@
             } else {
                 return 'Invalid';
             }
-
+    
             return netIDParts.join('.');
         }
-
-        // Function to get the host ID
+    
+        // Function to get the host ID of the IP address
         function getHostID(firstOctet, ipParts) {
             var hostIDParts = [];
-
+    
             if (firstOctet >= 1 && firstOctet <= 126) {
                 hostIDParts.push(ipParts[1] + '.' + ipParts[2] + '.' + ipParts[3]);
             } else if (firstOctet >= 128 && firstOctet <= 191) {
@@ -350,285 +388,322 @@
             } else {
                 return 'Invalid';
             }
-
+    
             return hostIDParts.join('.');
         }
 
-        // Function to get the network number
-        function getNN(firstOctet, ipParts) {
-            let ipStructure = [];
+// Function to get the network number
+function getNN(firstOctet, ipParts) {
+    let ipStructure = [];
 
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                // Class A
-                ipStructure.push(ipParts[0] + '.0.0.0');
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                // Class B
-                ipStructure.push(ipParts[0] + '.' + ipParts[1] + '.0.0');
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                // Class C
-                ipStructure.push(ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2] + '.0');
-            } else {
-                // Out of range
-                return 'Invalid';
-            }
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        // Class A: X.0.0.0
+        ipStructure.push(ipParts[0] + '.0.0.0');
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        // Class B: X.Y.0.0
+        ipStructure.push(ipParts[0] + '.' + ipParts[1] + '.0.0');
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        // Class C: X.Y.Z.0
+        ipStructure.push(ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2] + '.0');
+    } else {
+        // Out of range
+        return 'Invalid';
+    }
 
-            return ipStructure.join('.');
-        }
+    return ipStructure.join('.');
+}
 
-        // Function to get the broadcast address
-        function getBA(firstOctet, ipParts) {
-            var baParts = [];
+// Function to get the broadcast address
+function getBA(firstOctet, ipParts) {
+    var baParts = [];
 
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                // Class A: W.255.255.255
-                baParts.push(ipParts[0] + '.255.255.255');
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                // Class B: W.X.255.255
-                baParts.push(ipParts[0] + '.' + ipParts[1] + '.255.255');
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                // Class C: W.X.Y.255
-                baParts.push(ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2] + '.255');
-            } else {
-                // Out of range
-                return 'Invalid';
-            }
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        // Class A: X.255.255.255
+        baParts.push(ipParts[0] + '.255.255.255');
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        // Class B: X.Y.255.255
+        baParts.push(ipParts[0] + '.' + ipParts[1] + '.255.255');
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        // Class C: X.Y.Z.255
+        baParts.push(ipParts[0] + '.' + ipParts[1] + '.' + ipParts[2] + '.255');
+    } else {
+        // Out of range
+        return 'Invalid';
+    }
 
-            return baParts.join('.');
-        }
+    return baParts.join('.');
+}
 
-        // Function to get the subnet mask
-        function getSubnetMask(firstOctet) {
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                return '255.0.0.0';
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                return '255.255.0.0';
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                return '255.255.255.0';
-            } else {
-                return 'Invalid';
-            }
-        }
+// Function to get the subnet mask
+function getSubnetMask(firstOctet) {
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        return '255.0.0.0';
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        return '255.255.0.0';
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        return '255.255.255.0';
+    } else {
+        return 'Invalid';
+    }
+}
 
-        // Function to get the net worth
-        function getNetWorth(firstOctet) {
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                return '/8';
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                return '/16';
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                return '/24';
-            } else {
-                return 'Invalid';
-            }
-        }
+// Function to get the net worth
+function getNetWorth(firstOctet) {
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        return '/8';
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        return '/16';
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        return '/24';
+    } else {
+        return 'Invalid';
+    }
+}
 
-        // Function to get the number of networks
-        function getNumberOfNetworks(firstOctet) {
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                return '128';
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                return '16,384';
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                return '2,097,152';
-            } else {
-                return 'Invalid';
-            }
-        }
+// Function to get the number of networks
+function getNumberOfNetworks(firstOctet) {
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        return '128';
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        return '16,384';
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        return '2,097,152';
+    } else {
+        return 'Invalid';
+    }
+}
 
-        // Function to get the number of hosts
-        function getNumberOfHosts(firstOctet) {
-            if (firstOctet >= 1 && firstOctet <= 126) {
-                return '16,777,214';
-            } else if (firstOctet >= 128 && firstOctet <= 191) {
-                return '65,534';
-            } else if (firstOctet >= 192 && firstOctet <= 223) {
-                return '254';
-            } else {
-                return 'Invalid';
-            }
-        }
+// Function to get the number of hosts
+function getNumberOfHosts(firstOctet) {
+    if (firstOctet >= 1 && firstOctet <= 126) {
+        return '16,777,214';
+    } else if (firstOctet >= 128 && firstOctet <= 191) {
+        return '65,534';
+    } else if (firstOctet >= 192 && firstOctet <= 223) {
+        return '254';
+    } else {
+        return 'Invalid';
+    }
+}
 
-        // Function to generate a random IP address
-        function generateRandomIP() {
-            var ipParts = [];
+// Function to generate a random IP address
+function generateRandomIP() {
+    var ipParts = [];
 
-            for (var i = 0; i < 4; i++) {
-                ipParts.push(Math.floor(Math.random() * 256));
-            }
+    // Generate 4 random octets and join them with periods to form an IP address
+    for (var i = 0; i < 4; i++) {
+        ipParts.push(Math.floor(Math.random() * 256));
+    }
 
-            document.getElementById('ip').value = ipParts.join('.');
-        }
+    // Set the generated IP address in the input field
+    document.getElementById('ip').value = ipParts.join('.');
+}
 
-        // Function to start the IP conversion quiz
-        function startQuiz() {
-            document.getElementById('quiz').innerHTML = '';
-            document.getElementById('quizResult').innerHTML = '';
-            document.getElementById('quizBinary').innerHTML = '';
-            document.getElementById('quizResultBinary').innerHTML = '';
+// Function to start the IP conversion quiz
+function startQuiz() {
+    // Clear previous quiz and results
+    document.getElementById('quiz').innerHTML = '';
+    document.getElementById('quizResult').innerHTML = '';
+    document.getElementById('quizBinary').innerHTML = '';
+    document.getElementById('quizResultBinary').innerHTML = '';
 
-            var randomIP = generateRandomIPForQuiz();
-            quizIP = getBinaryFromIP(randomIP);
+    // Generate a random IP and its binary representation for the quiz
+    var randomIP = generateRandomIPForQuiz();
+    quizIP = getBinaryFromIP(randomIP);
 
-            document.getElementById('quiz').innerHTML = '<div class="quizTitle">تبدیل آدرس IP زیر به باینری:</div><div class="quizContent">' + randomIP + '<input id="quizInput" type="text" placeholder="باینریِ IP را وارد کنید"><button onclick="checkQuiz()">محاسبه</button><button onclick="document.getElementById(\'quizInput\').value = \'' + quizIP + '\'">نمایش</button></div>';
+    // Display the IP conversion quiz
+    document.getElementById('quiz').innerHTML = '<div class="quizTitle">تبدیل آدرس IP زیر به باینری:</div><div class="quizContent">' + randomIP + '<input id="quizInput" type="text" placeholder="باینریِ IP را وارد کنید"><button onclick="checkQuiz()">محاسبه</button><button onclick="document.getElementById(\'quizInput\').value = \'' + quizIP + '\'">نمایش</button></div>';
 
-            var randomBinary = generateRandomBinaryForQuiz();
-            quizBinary = getIPFromBinary(randomBinary);
+    // Generate a random binary and its IP representation for the quiz
+    var randomBinary = generateRandomBinaryForQuiz();
+    quizBinary = getIPFromBinary(randomBinary);
 
-            document.getElementById('quizBinary').innerHTML = '<div class="quizTitle">تبدیل باینری زیر به آدرس IP:</div><div class="quizContent">' + randomBinary + '<input id="quizInputBinary" type="text" placeholder="آی پی را وارد کنید"><button onclick="checkQuizBinary()">محاسبه</button><button onclick="document.getElementById(\'quizInputBinary\').value = \'' + quizBinary + '\'">نمایش</button></div>';
-        }
+    // Display the binary conversion quiz
+    document.getElementById('quizBinary').innerHTML = '<div class="quizTitle">تبدیل باینری زیر به آدرس IP:</div><div class="quizContent">' + randomBinary + '<input id="quizInputBinary" type="text" placeholder="آی پی را وارد کنید"><button onclick="checkQuizBinary()">محاسبه</button><button onclick="document.getElementById(\'quizInputBinary\').value = \'' + quizBinary + '\'">نمایش</button></div>';
+}
 
-        // Function to generate a random IP address for the quiz
-        function generateRandomIPForQuiz() {
-            var ipParts = [];
+// Function to generate a random IP address for the quiz
+function generateRandomIPForQuiz() {
+    var ipParts = [];
 
-            for (var i = 0; i < 4; i++) {
-                ipParts.push(Math.floor(Math.random() * 256));
-            }
+    // Generate 4 random octets and join them with periods to form an IP address
+    for (var i = 0; i < 4; i++) {
+        ipParts.push(Math.floor(Math.random() * 256));
+    }
 
-            return ipParts.join('.');
-        }
+    return ipParts.join('.');
+}
 
-        // Function to generate a random binary for the quiz
-        function generateRandomBinaryForQuiz() {
-            var binaryParts = [];
+// Function to generate a random binary for the quiz
+function generateRandomBinaryForQuiz() {
+    var binaryParts = [];
 
-            for (var i = 0; i < 4; i++) {
-                binaryParts.push(Math.floor(Math.random() * 256).toString(2));
-            }
+    // Generate 4 random binary octets and join them with periods to form a binary representation
+    for (var i = 0; i < 4; i++) {
+        binaryParts.push(Math.floor(Math.random() * 256).toString(2));
+    }
 
-            return binaryParts.join('.');
-        }
+    return binaryParts.join('.');
+}
 
-        // Function to check the IP conversion quiz answer
-        function checkQuiz() {
-            var userInput = document.getElementById('quizInput').value;
+// Function to check the IP conversion quiz answer
+function checkQuiz() {
+    var userInput = document.getElementById('quizInput').value;
 
-            if (userInput === quizIP) {
-                document.getElementById('quizResult').innerHTML = '<span style="color: green;">جواب درست است ✅</span>';
-            } else {
-                document.getElementById('quizResult').innerHTML = '<span style="color: red;">جواب اشتباه است ❌</span>';
-            }
-        }
+    if (userInput === quizIP) {
+        document.getElementById('quizResult').innerHTML = '<span style="color: green;">جواب درست است ✅</span>';
+    } else {
+        document.getElementById('quizResult').innerHTML = '<span style="color: red;">جواب اشتباه است ❌</span>';
+    }
+}
 
-        // Function to check the binary conversion quiz answer
-        function checkQuizBinary() {
-            var userInput = document.getElementById('quizInputBinary').value;
+// Function to check the binary conversion quiz answer
+function checkQuizBinary() {
+    var userInput = document.getElementById('quizInputBinary').value;
 
-            if (userInput === quizBinary) {
-                document.getElementById('quizResultBinary').innerHTML = '<span style="color: green;">جواب درست است ✅</span>';
-            } else {
-                document.getElementById('quizResultBinary').innerHTML = '<span style="color: red;">جواب اشتباه است ❌</span>';
-            }
-        }
+    if (userInput === quizBinary) {
+        document.getElementById('quizResultBinary').innerHTML = '<span style="color: green;">جواب درست است ✅</span>';
+    } else {
+        document.getElementById('quizResultBinary').innerHTML = '<span style="color: red;">جواب اشتباه است ❌</span>';
+    }
+}
 
-        // Function to reset the page
-        function resetPage() {
-            document.getElementById('ip').value = '';
-            document.getElementById('result').innerHTML = '';
-            document.getElementById('steps').innerHTML = '';
-            document.getElementById('mathSteps').innerHTML = '';
-            document.getElementById('ipAnalysis').innerHTML = '';
-            document.getElementById('quiz').innerHTML = '';
-            document.getElementById('quizResult').innerHTML = '';
-            document.getElementById('quizBinary').innerHTML = '';
-            document.getElementById('quizResultBinary').innerHTML = '';
-        }
+// Function to reset the page
+function resetPage() {
+    // Clear all input fields and result sections
+    document.getElementById('ip').value = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('steps').innerHTML = '';
+    document.getElementById('mathSteps').innerHTML = '';
+    document.getElementById('ipAnalysis').innerHTML = '';
+    document.getElementById('quiz').innerHTML = '';
+    document.getElementById('quizResult').innerHTML = '';
+    document.getElementById('quizBinary').innerHTML = '';
+    document.getElementById('quizResultBinary').innerHTML = '';
 
-        // Function to check if a value is numeric
-        function isNumeric(value) {
-            return /^\d+$/.test(value);
-        }
-
-        // Function to show IP analysis
-        function showAnalysis() {
-            var ip = document.getElementById('ip').value;
-            var ipParts = ip.split('.');
-            var firstOctet = parseInt(ipParts[0]);
-            var classResult = getClass(firstOctet);
-            var netIDResult = getNetID(firstOctet, ipParts);
-            var hostIDResult = getHostID(firstOctet, ipParts);
-            var nnResult = getNN(firstOctet, ipParts);
-            var baResult = getBA(firstOctet, ipParts);
-            var subnetMaskResult = getSubnetMask(firstOctet);
-            var netWorthResult = getNetWorth(firstOctet);
-            var numberOfNetworksResult = getNumberOfNetworks(firstOctet);
-            var numberOfHostsResult = getNumberOfHosts(firstOctet);
-
-            var ipAnalysisDiv = document.getElementById('ipAnalysis');
-            ipAnalysisDiv.innerHTML = '<table><tr><th>کلاس IP</th><th>Net ID</th><th>Host ID</th><th>NN</th><th>BA</th><th>Subnet Mask</th><th>Net Value</th><th>تعداد شبکه‌ها</th><th>تعداد میزبان‌ها</th></tr><tr><td>' + classResult + '</td><td>' + netIDResult + '</td><td>' + hostIDResult + '</td><td>' + nnResult + '</td><td>' + baResult + '</td><td>' + subnetMaskResult + '</td><td>' + netWorthResult + '</td><td>' + numberOfNetworksResult + '</td><td>' + numberOfHostsResult + '</td></tr></table>';
-        }
-
-        // Function to convert IP address to binary
-        function getBinaryFromIP(ip) {
-            var ipParts = ip.split('.');
-            var binaryParts = [];
-
-            for (var i = 0; i < ipParts.length; i++) {
-                var part = ipParts[i];
-                var binaryPart = parseInt(part).toString(2);
-
-                while (binaryPart.length < 8) {
-                    binaryPart = '0' + binaryPart;
-                }
-
-                binaryParts.push(binaryPart);
-            }
-
-            return binaryParts.join('.');
-        }
-
-        // Function to convert binary to IP address
-        function getIPFromBinary(binary) {
-            var binaryParts = binary.split('.');
-            var ipParts = [];
-
-            for (var i = 0; i < binaryParts.length; i++) {
-                var part = binaryParts[i];
-                var decimalPart = parseInt(part, 2).toString();
-
-                ipParts.push(decimalPart);
-            }
-
-            return ipParts.join('.');
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-        const header = document.querySelector('.accordion-header');
-        const content = header.nextElementSibling;
-        content.style.display = 'none';  // This line ensures the content is hidden when the page loads
-        header.addEventListener('click', function() {
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
+        // New code to close accordion sections:
+        var accordionContents = document.querySelectorAll('.accordion-content');
+    accordionContents.forEach(function(content) {
+        content.style.display = 'none';
     });
+}
+
+
+// Function to check if a value is numeric
+function isNumeric(value) {
+    return /^\d+$/.test(value);
+}
+
+// Function to show IP analysis
+function showAnalysis() {
+    // Get the entered IP address and its parts
+    var ip = document.getElementById('ip').value;
+    var ipParts = ip.split('.');
+    var firstOctet = parseInt(ipParts[0]);
+
+    // Calculate various IP analysis results
+    var classResult = getClass(firstOctet);
+    var netIDResult = getNetID(firstOctet, ipParts);
+    var hostIDResult = getHostID(firstOctet, ipParts);
+    var nnResult = getNN(firstOctet, ipParts);
+    var baResult = getBA(firstOctet, ipParts);
+    var subnetMaskResult = getSubnetMask(firstOctet);
+    var netWorthResult = getNetWorth(firstOctet);
+    var numberOfNetworksResult = getNumberOfNetworks(firstOctet);
+    var numberOfHostsResult = getNumberOfHosts(firstOctet);
+
+    // Display the IP analysis in a table format
+    var ipAnalysisDiv = document.getElementById('ipAnalysis');
+    ipAnalysisDiv.innerHTML = '<table><tr><th>کلاس IP</th><th>Net ID</th><th>Host ID</th><th>NN</th><th>BA</th><th>Subnet Mask</th><th>Net Value</th><th>تعداد شبکه‌ها</th><th>تعداد میزبان‌ها</th></tr><tr><td>' + classResult + '</td><td>' + netIDResult + '</td><td>' + hostIDResult + '</td><td>' + nnResult + '</td><td>' + baResult + '</td><td>' + subnetMaskResult + '</td><td>' + netWorthResult + '</td><td>' + numberOfNetworksResult + '</td><td>' + numberOfHostsResult + '</td></tr></table>';
+}
+
+// Function to convert IP address to binary
+function getBinaryFromIP(ip) {
+    var ipParts = ip.split('.');
+    var binaryParts = [];
+
+    // Convert each octet to binary and ensure it is 8 bits long
+    for (var i = 0; i < ipParts.length; i++) {
+        var part = ipParts[i];
+        var binaryPart = parseInt(part).toString(2);
+
+        while (binaryPart.length < 8) {
+            binaryPart = '0' + binaryPart;
+        }
+
+        binaryParts.push(binaryPart);
+    }
+
+    return binaryParts.join('.');
+}
+
+// Function to convert binary to IP address
+function getIPFromBinary(binary) {
+    var binaryParts = binary.split('.');
+    var ipParts = [];
+
+    // Convert each binary octet to decimal
+    for (var i = 0; i < binaryParts.length; i++) {
+        var part = binaryParts[i];
+        var decimalPart = parseInt(part, 2).toString();
+
+        ipParts.push(decimalPart);
+    }
+
+    return ipParts.join('.');
+}
+
+// get all accordion headers
+var acc = document.getElementsByClassName("accordion-header");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        // toggle display of the next sibling element (which is the accordion-content)
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
+
+window.onload = function() {
+    var accContent = document.querySelectorAll('.accordion-content');
+    accContent.forEach(function(content) {
+        content.style.display = 'none';
+    });
+}
 </script>
 
-    <body style="padding-bottom: 80px;">
-        
+<body style="padding-bottom: 90px;">
+<!-- ... rest of your code ... -->
 <footer style="position: fixed; left: 0; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px;">
+    <!-- The footer contains some text and links, styled and positioned at the bottom of the page. -->
     <p>₿ این پروژه اُپن سورس است و برای تفریح و آموزش ساخته شده ₿ <a href="https://github.com/Ham3d-s/IP-Converter" target="_blank">GitHub</a>.</p>
     <div>
+        <!-- Link icons to various social profiles and projects, with a hover style change. -->
         <a href="https://twitter.com/Ham3ds_" target="_blank"><i class="fab fa-twitter"></i></a>
         <a href="https://github.com/Ham3d-s" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://t.me/Ham3ds" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-      </div>      
-      <style>
+    </div>      
+    <style>
+        /* Style rules for the FontAwesome icons */
         .fab {
           font-size: 20px;
           color: rgb(255, 255, 255);
           margin-right: 10px;
         }
+        /* Change color on hover */
         .fab:hover {
-          color: #f2b21d; /* Change color on hover */
+          color: #f2b21d; 
         }
-        
-      </style>
-      
-    </footer>
-
+    </style>    
+</footer>
 </body>
-
 </html>
 
-<!-- Final Output -->
-<!-- The code has been rewritten in a readable and clean manner while preserving its structure and functionality. -->
-<!-- Each part of the code has been explained and organized to enhance readability. -->
+<!-- The script waits for the DOM to be fully loaded, then selects and iterates through each accordion element. -->
+<!-- When an accordion header is clicked, it toggles the visibility of the associated accordion content. -->
+<!-- The footer contains links to social profiles and projects, styled with CSS. -->
