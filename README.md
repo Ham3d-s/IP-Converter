@@ -6,7 +6,7 @@ The IP to Binary Converter is a web application that allows users to convert IPv
 
 ## Try the Demo
 
-Click [here](http://ipchanger.fun) to access the interactive demo and test the IP to Binary Converter.
+Click [here](https://ip-converter.netlify.app/) to access the interactive demo and test the IP to Binary Converter.
 The website provides an interactive demo of the converter, allowing you to enter an IP address, convert it to binary format, and explore the analysis features.
 
 Please note that the demo website might have slight differences in appearance or additional features compared to the local installation of the converter.
