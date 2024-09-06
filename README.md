@@ -2,7 +2,7 @@
 
 The IP to Binary Converter is a web application that allows users to convert IPv4 addresses into their binary representation. It provides a user-friendly interface and various analysis features related to IP addresses.
 
-![Screenshot](2023-11-06_07-54-01.png)
+![Screenshot](1725594198.png)
 
 ## Try the Demo
 
@@ -54,13 +54,13 @@ The IP to Binary Converter should work in most modern web browsers with JavaScri
 
 The following are potential improvements and features that can be considered for future versions of the IP to Binary Converter:
 
-- [ ] Enhanced Error Handling: Improve error handling for invalid input and provide informative error messages to users.
+- [x] Enhanced Error Handling: Improve error handling for invalid input and provide informative error messages to users.
 - [ ] IPv6 Support: Extend the converter to support IPv6 addresses and their binary representation.
-- [ ] User-Friendly Interface: Enhance the user interface to provide a more intuitive and visually appealing experience.
+- [x] User-Friendly Interface: Enhance the user interface to provide a more intuitive and visually appealing experience.
 - [ ] Additional Analysis: Add more analysis features, such as identifying the network class based on the subnet mask or detecting private IP addresses.
 - [ ] Conversion History: Implement a conversion history feature that allows users to view and recall previously converted IP addresses.
 - [ ] Localization: Add support for multiple languages, allowing users to use the application in their preferred language.
-- [ ] Performance Optimization: Optimize the code and algorithms to improve the performance and efficiency of the converter.
+- [x] Performance Optimization: Optimize the code and algorithms to improve the performance and efficiency of the converter.
 
 These are just a few ideas to further enhance the IP to Binary Converter. Contributions and suggestions are highly appreciated! If you have any ideas or would like to contribute to the project, feel free to open an issue or submit a pull request. Let's make this converter even better together!
 
