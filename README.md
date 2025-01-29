@@ -1,100 +1,106 @@
-# IP to Binary Converter
+# 🧰 تبدیل‌گر IP به باینری | IP to Binary Converter
 
-The IP to Binary Converter is a web application that allows users to convert IPv4 addresses into their binary representation. It provides a user-friendly interface and various analysis features related to IP addresses.
+[![آخرین نسخه](https://img.shields.io/github/v/release/Ham3d-s/IP-Converter?style=flat-square)](https://github.com/Ham3d-s/IP-Converter/releases/latest)
+[![زبان‌های استفاده شده](https://img.shields.io/github/languages/top/Ham3d-s/IP-Converter?style=flat-square)](https://github.com/Ham3d-s/IP-Converter)
+[![وضعیت پروژه](https://img.shields.io/github/last-commit/Ham3d-s/IP-Converter?style=flat-square)](https://github.com/Ham3d-s/IP-Converter/commits/main)
+[![پشتیبانی از حالت شب](https://img.shields.io/badge/%D9%BE%D8%B4%D8%AA%DB%8C%D8%A8%D8%A7%D9%86%DB%8C-%D8%AD%D8%A7%D9%84%D8%AA%20%D8%B4%D8%A8-informational?style=flat-square)](https://github.com/Ham3d-s/IP-Converter)
+[![پشتیبانی از فارسی](https://img.shields.io/badge/%D9%BE%D8%B4%D8%AA%DB%8C%D8%A8%D8%A7%D9%86%DB%8C-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-informational?style=flat-square)](https://github.com/Ham3d-s/IP-Converter)
+[![توییتر](https://img.shields.io/twitter/follow/Ham3ds_?style=social)](https://twitter.com/Ham3ds_)
 
-![Screenshot](1725594198.png)
+---
 
-## Try the Demo
+## 💡 معرفی
 
-Click [here](https://ip-converter.netlify.app/) to access the interactive demo and test the IP to Binary Converter.
-The website provides an interactive demo of the converter, allowing you to enter an IP address, convert it to binary format, and explore the analysis features.
+**تبدیل‌گر IP به باینری** یک برنامه تحت وب است که به کاربران امکان می‌دهد آدرس‌های IPv4 را به نمایش باینری آن‌ها تبدیل کنند. این برنامه یک رابط کاربری کاربرپسند و ویژگی‌های تحلیلی متنوعی مرتبط با آدرس‌های IP ارائه می‌دهد.
 
-Please note that the demo website might have slight differences in appearance or additional features compared to the local installation of the converter.
+![پیش‌نمایش برنامه](1738103944567.png)
 
-## Features
+## 🚀 نسخه نمایشی آنلاین
 
-**IP to Binary Conversion:** Enter an IPv4 address, and the application will convert it to binary format. The binary representation is displayed in the output section.
+برای استفاده از نسخه نمایشی **تبدیل‌گر IP به باینری**، [اینجا](https://ip-converter.netlify.app/) کلیک کنید.
 
-**Step-by-Step Calculation:** The application provides a step-by-step calculation of the binary conversion process.
+این وب‌سایت به شما امکان می‌دهد یک آدرس IP را وارد کنید، آن را به فرمت باینری تبدیل کنید و ویژگی‌های تحلیلی را بررسی کنید.
 
-**IP Analysis:** Perform detailed analysis of the entered IP address, including IP class, network ID, host ID, network address, broadcast address, subnet mask, network worth, number of networks, and number of hosts.
+لطفاً توجه داشته باشید که وب‌سایت نسخه نمایشی ممکن است تفاوت‌های جزئی یا ویژگی‌های اضافی مطرح شده داشته باشد.
 
-**Random IP Generator:** Generate random IP addresses for conversion.
+## ✨ ویژگی‌ها
 
-**Quiz:** Test your knowledge of IP to binary conversion through an interactive quiz feature.
+*   **تبدیل IP به باینری:** یک آدرس IPv4 را وارد کنید، و برنامه آن را به فرمت باینری تبدیل خواهد کرد. نمایش باینری در بخش خروجی نشان داده می‌شود.
+*   **محاسبه گام به گام:** برنامه یک محاسبه گام به گام از فرآیند تبدیل باینری ارائه می‌دهد.
+*   **تحلیل IP:** تجزیه و تحلیل دقیق آدرس IP وارد شده، از جمله کلاس IP، شناسه شبکه، شناسه میزبان، آدرس شبکه، آدرس پخش همگانی، ماسک زیرشبکه، ارزش شبکه، تعداد شبکه‌ها و تعداد میزبان‌ها را انجام می‌دهد.
+*   **تولید IP تصادفی:** آدرس‌های IP تصادفی برای تبدیل تولید کنید.
+*   **آزمون:** دانش خود را در مورد تبدیل IP به باینری از طریق یک ویژگی آزمون تعاملی آزمایش کنید.
+*   🌙 **حالت شب (Dark Mode):** تجربه کاربری راحت‌تر در محیط‌های کم نور با دارک مود.
+*   🎨 **رابط کاربری مدرن و جذاب:** طراحی زیبا و واکنش‌گرا با استفاده از CSS Variables و Tailwind CSS.
+*   ✅ **بهبود بخش آزمون:** طراحی جذاب‌تر و بازخورد بصری برای نتایج آزمون.
+*   📤 **قابلیت خروجی گرفتن (Export):** خروجی گرفتن از نتایج در فرمت‌های PDF, JSON, TXT, CSV. (به صورت موقت غیر فعال است)
+*   ⌨️ **میانبرهای صفحه‌کلید (Keyboard Shortcuts):** استفاده سریع‌تر با میانبرهای صفحه‌کلید برای عملکردهای اصلی.
+*   🌐 **آماده‌سازی برای IPv6:** ساختار کد آماده برای پشتیبانی از IPv6 در آینده.
 
-## Usage
+## 🚀 نحوه استفاده
 
-1. Open the `index.html` file in a web browser.
-2. Enter the IP address you want to convert in the input field.
-3. Click the "Convert" button to convert the IP address to binary format. The binary representation will be displayed in the output section.
-4. To view detailed analysis of the IP address, click the "Analysis" button.
-5. Click the "Random IP" button to generate a random IP address.
-6. Start the quiz by clicking the "Quiz" button. Enter your answer and click "Calculate" to check if it is correct.
+1.  فایل `IP to Binary Converter.html` را در یک مرورگر وب باز کنید.
+2.  آدرس IP مورد نظر برای تبدیل را در فیلد ورودی وارد کنید.
+3.  برای تبدیل آدرس IP به فرمت باینری، روی دکمه "تبدیل" کلیک کنید. نمایش باینری در بخش خروجی نشان داده خواهد شد.
+4.  برای مشاهده تجزیه و تحلیل دقیق آدرس IP، روی دکمه "تحلیل" کلیک کنید.
+5.  برای تولید یک آدرس IP تصادفی، روی دکمه "IP تصادفی" کلیک کنید.
+6.  با کلیک روی دکمه "آزمون" آزمون را شروع کنید. پاسخ خود را وارد کنید و برای بررسی درستی آن، روی "محاسبه" کلیک کنید.
+7.  برای تغییر حالت تم، روی دکمه ماه/خورشید در گوشه صفحه کلیک کنید.
+8.  برای خروجی گرفتن از نتایج، از منوی خروجی فرمت مورد نظر خود را انتخاب کنید. (در حال حاضر غیر فعال است)
 
-**Example:**
+**مثال:**
 
-Suppose you want to convert the IP address 192.168.0.1 to binary format using the IP to Binary Converter.
+فرض کنید می‌خواهید آدرس IP `192.168.0.1` را با استفاده از **تبدیل‌گر IP به باینری** به فرمت باینری تبدیل کنید.
 
-1. Enter `192.168.0.1` in the input field.
-2. Click the "Convert" button.
-3. The output section will display the binary representation of the IP address: `11000000.10101000.00000000.00000001`.
+1.  `192.168.0.1` را در فیلد ورودی وارد کنید.
+2.  روی دکمه "تبدیل" کلیک کنید.
+3.  بخش خروجی نمایش باینری آدرس IP را نمایش می‌دهد: `11000000.10101000.00000000.00000001`.
 
-## Dependencies
+## ⚙️ وابستگی‌ها
 
-The IP to Binary Converter relies on the following dependencies:
+**تبدیل‌گر IP به باینری** به وابستگی‌های زیر متکی است:
 
-- Vazir Matn: A Persian font used for the application's text.
+*   [Vazirmatn](https://github.com/rastikerdar/vazirmatn): فونت فارسی استفاده شده برای متن برنامه.
+*   [Font Awesome](https://fontawesome.com/): برای آیکون‌ها.
+*   [Bootstrap RTL](https://getbootstrap.rtlcss.com/): برای استایل‌دهی راست‌چین.
+*   [Material Icons](https://fonts.google.com/icons): برای آیکون‌های بیشتر.
+*   [Tailwind CSS](https://tailwindcss.com/): برای استایل‌دهی و واکنش‌گرایی.
+*   [jsPDF](https://jspdf.com/): برای قابلیت خروجی PDF.
 
-## Compatibility
+## ✅ سازگاری
 
-The IP to Binary Converter should work in most modern web browsers with JavaScript enabled.
+**تبدیل‌گر IP به باینری** باید در اکثر مرورگرهای وب مدرن با قابلیت جاوا اسکریپت فعال کار کند.
 
-## Roadmap
+## 🗺️ نقشه راه
 
-The following are potential improvements and features that can be considered for future versions of the IP to Binary Converter:
+*   ✅ **رسیدگی به خطای پیشرفته:** بهبود رسیدگی به خطا برای ورودی نامعتبر و ارائه پیام‌های خطای آموزنده به کاربران.
+*   ☑️ **پشتیبانی از IPv6:** گسترش مبدل برای پشتیبانی از آدرس‌های IPv6 و نمایش باینری آن‌ها.
+*   ✅ **رابط کاربری کاربرپسند:** بهبود رابط کاربری برای ارائه یک تجربه بصری جذاب‌تر و شهودی‌تر.
+*   ☐ **تحلیل‌های اضافی:** افزودن ویژگی‌های تحلیلی بیشتر، مانند شناسایی کلاس شبکه بر اساس ماسک زیرشبکه یا تشخیص آدرس‌های IP خصوصی.
+*   ☐ **تاریخچه تبدیل:** پیاده‌سازی یک ویژگی تاریخچه تبدیل که به کاربران امکان می‌دهد آدرس‌های IP تبدیل شده قبلی را مشاهده و بازیابی کنند.
+*   ☐ **بومی‌سازی:** افزودن پشتیبانی از چندین زبان، که به کاربران امکان می‌دهد از برنامه به زبان دلخواه خود استفاده کنند.
+*   ✅ **بهینه‌سازی عملکرد:** بهینه‌سازی کد و الگوریتم‌ها برای بهبود عملکرد و کارایی مبدل.
 
-- [x] Enhanced Error Handling: Improve error handling for invalid input and provide informative error messages to users.
-- [ ] IPv6 Support: Extend the converter to support IPv6 addresses and their binary representation.
-- [x] User-Friendly Interface: Enhance the user interface to provide a more intuitive and visually appealing experience.
-- [ ] Additional Analysis: Add more analysis features, such as identifying the network class based on the subnet mask or detecting private IP addresses.
-- [ ] Conversion History: Implement a conversion history feature that allows users to view and recall previously converted IP addresses.
-- [ ] Localization: Add support for multiple languages, allowing users to use the application in their preferred language.
-- [x] Performance Optimization: Optimize the code and algorithms to improve the performance and efficiency of the converter.
+این‌ها فقط چند ایده برای بهبود بیشتر **تبدیل‌گر IP به باینری** هستند. اگر ایده‌ای دارید یا مایل به مشارکت در پروژه هستید، می‌توانید یک Issue باز کنید یا درخواست Pull Request ارسال کنید. یا حتی در سوشال مدیا به من پیام دهید!
 
-These are just a few ideas to further enhance the IP to Binary Converter. Contributions and suggestions are highly appreciated! If you have any ideas or would like to contribute to the project, feel free to open an issue or submit a pull request. Let's make this converter even better together!
+## مجوز
 
-## License
+این پروژه تحت [مجوز MIT](LICENSE) منتشر شده است.
 
-The IP to Binary Converter is released under the MIT License with Attribution.
+شما آزاد هستید که این پروژه را برای اهداف شخصی و تجاری استفاده کنید، تغییر دهید و توزیع کنید. با این حال، طبق شرایط مجوز MIT، هنگام استفاده از این نرم‌افزار یا آثار مشتق شده از آن، باید به منبع اصلی اعتبار دهید. لطفاً برای اطلاعات بیشتر فایل [LICENSE](LICENSE) را مطالعه کنید.
 
-### MIT License
+**الزام Attribution:**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to the following conditions:
+هنگام استفاده از تبدیل‌گر IP به باینری یا آثار مشتق شده از آن، باید با درج اطلاعات زیر، Attribution مناسب را ارائه دهید:
 
-1. The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*   **نام نرم‌افزار:** IP to Binary Converter
+*   **نویسنده اصلی:** Ham3ds
+*   **لینک به مخزن اصلی:** [https://github.com/Ham3d-s/ip-converter](https://github.com/Ham3d-s/ip-converter)
 
-2. Attribution Requirement: When using the Software or its derivative works, you must give appropriate credit to the original source by prominently displaying the following information:
-   - The name of the software: IP to Binary Converter
-   - The original author: Ham3ds
-   - A link to the original repository: [https://github.com/Ham3d-s/ip-converter](https://github.com/Ham3d-s/ip-converter)
 
-3. The derived works must also be released under the MIT License with Attribution.
 
-### Attribution Requirement
 
-When using the IP to Binary Converter or its derivative works, you must provide proper attribution by including the following information:
+توسعه داده شده توسط [Ham3ds](https://github.com/Ham3d-s).
 
-- The name of the software: IP to Binary Converter
-- The original author: Ham3ds
-- A link to the original repository: [https://github.com/Ham3d-s/ip-converter](https://github.com/Ham3d-s/ip-converter)
 
-### Limitation of Liability
-
-The IP to Binary Converter is provided "as is," and the copyright holders and contributors disclaim all warranties, including but not limited to the implied warranties of merchantability and fitness for a particular purpose. In no event shall the copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages arising in any way out of the use of the software.
-
-By using the IP to Binary Converter, you agree to the terms of this license and understand the limitations of liability mentioned above.
-
-## Credits
-
-The IP to Binary Converter is developed by [Ham3ds](https://github.com/Ham3d-s).
+---
