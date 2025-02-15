@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <title>تبدیل کننده آی‌پی به باینری</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
+        integrity="sha384-vus3nQ1eKb1D/KShfHiFhOI7KwR2/AP7af4I91cvNLMYYZSY3e3fEsvh8GCyyvi5" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your CSS file -->
+</head>
+
+<body class="container">
+    <button class="theme-toggle btn" onclick="toggleTheme()">
+        <i class="material-icons">dark_mode</i>
+    </button>
+    <main id="converter" class="container">
+        <header class="text-center mb-8">
+            <h1 class="app-title">
+                تبدیل کننده آی‌پی به باینری
+            </h1>
+        </header>
+        <section class="flex flex-col items-center">
+            <div class="input-container">
+                <label for="ip" class="block mb-2 text-sm font-medium">آدرس IP:</label>
+                <input type="text" id="ip"
+                    class="fancy-input"
+                    placeholder="آی‌پی را وارد کنید یا روی آی‌پی تصادفی بزنید">
+                <div class="button-group">
+                    <button onclick="generateRandomIP()" class="btn">
+                        <i class="material-icons">shuffle</i>
+                        IP تصادفی
+                    </button>
+                    <button onclick="convertToBinary()" class="btn">
+                        <i class="material-icons">transform</i>
+                        تبدیل
+                    </button>
+                    <button onclick="showAnalysis()" class="btn">
+                        <i class="material-icons">analytics</i>
+                        تحلیل
+                    </button>
+                    <button onclick="startQuiz()" class="btn">
+                        <i class="material-icons">quiz</i>
+                        آزمون
+                    </button>
+                    <button onclick="resetPage()" class="btn btn-danger">
+                        <i class="material-icons">restore</i>
+                        ریست کردن
+                    </button>
+                </div>
+            </div>
+            <section class="mt-8 w-full">
+                <h2 class="text-xl font-bold">نمایش خروجی باینری:</h2>
+                <div id="result" class="p-4 mt-2 border rounded bg-gray-100"></div>
+            </section>
+            <section class="mt-8 w-full">
+                <h2 class="text-xl font-bold">مراحل قدم به قدم محاسبات:</h2>
+                <div id="steps" class="p-4 mt-2 border rounded bg-gray-100"></div>
+            </section>
+            <section class="mt-8 w-full">
+                <h2 class="text-xl font-bold">مراحل ریاضی محاسبات :</h2>
+                <div id="mathSteps" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="fancy-table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 bg-gray-50 dark:bg-gray-800">عدد اعشاری
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    فرآیند تبدیل به باینری
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 bg-gray-50 dark:bg-gray-800">عدد باینری
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="mathStepsBody">
+                            <!-- Table rows will be added here -->
+                        </tbody>
+                    </table>
+                </div>
+                <button
+                    class="accordion-header mt-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                    توضیحات مراحل ریاضی
+                </button>
+                <div class="accordion-content p-4 mt-2 border rounded bg-gray-100">
+                    <img src="https://c440662.parspack.net/c440662//2023-11-06_07-24.png"
+                        alt="Description of image">
+                    <p></p>
+                </div>
+            </section>
+            <section class="mt-8 w-full">
+                <h2 class="text-xl font-bold">تحلیل IP:</h2>
+                <div class="table-container">
+                    <div id="ipAnalysis" class="relative overflow-x-auto">
+                        <table
+                            class="fancy-table w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800">کلاس IP
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Net ID
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800">Host ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        NN
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800">BA
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Subnet Mask
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800">Net Value
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        تعداد شبکه‌ها
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 bg-gray-50 dark:bg-gray-800">تعداد میزبان‌ها
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="ipAnalysisBody">
+                                <!-- Table rows will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="accordion mt-4">
+                    <button
+                        class="accordion-header text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                        توضیح در ارتباط با بخش تحلیل آی‌پی
+                    </button>
+                    <div class="accordion-content p-4 mt-2 border rounded bg-gray-100">
+                        <img src="https://c440662.parspack.net/c440662//2023-11-02_04-45.png"
+                            alt="Description of IP analysis classes">
+                        <img src="https://c440662.parspack.net/c440662//2023-11-04_08-38.png"
+                            alt="Description of IP class ranges">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+            <section class="mt-8 w-full">
+                <div id="quiz"></div>
+                <div id="quizResult" class="quiz-result-section"></div>
+                <div id="quizBinary"></div>
+                <div id="quizResultBinary" class="quiz-result-section"></div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://twitter.com/Ham3ds_" target="_blank" class="footer-link">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                    <a href="https://github.com/Ham3d-s" target="_blank" class="footer-link">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://t.me/Ham3ds" target="_blank" class="footer-link">
+                        <i class="fab fa-telegram"></i>
+                        Telegram
+                    </a>
+                </div>
+                <div class="copyright">
+                    <p>₿ این پروژه برای تفریح و آموزش ساخته شده ₿</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> <!-- Link to your JavaScript file -->
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('exportModal')">×</span>
+            <h2>Export As</h2>
+            <div class="button-group">
+                <button onclick="exportAs('pdf')" class="btn">PDF</button>
+                <button onclick="exportAs('json')" class="btn">JSON</button>
+                <button onclick="exportAs('txt')" class="btn">TXT</button>
+                <button onclick="exportAs('csv')" class="btn">CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Modal -->
+    <div id="shortcutsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('shortcutsModal')">×</span>
+            <h2>Keyboard Shortcuts</h2>
+            <table>
+                <tr>
+                    <td>Ctrl + 4</td>
+                    <td>IPv4 Mode</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + 6</td>
+                    <td>IPv6 Mode</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + R</td>
+                    <td>Generate Random IP</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Enter</td>
+                    <td>Convert to Binary</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + E</td>
+                    <td>Show Export Modal</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Q</td>
+                    <td>Start Quiz</td>
+                </tr>
+                <tr>
+                    <td>Esc</td>
+                    <td>Close Modal</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="shortcuts-badge" onclick="showShortcutsModal()">
+        ?
+    </div>
+
+    <!-- Add jsPDF for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</body>
+
+</html>

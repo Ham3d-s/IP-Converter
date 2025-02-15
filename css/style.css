@@ -1,0 +1,692 @@
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --secondary: #059669;
+    --secondary-dark: #047857;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --radius: 1rem;
+}
+
+[data-theme="dark"] {
+    --primary: #818cf8;
+    --primary-dark: #6366f1;
+    --secondary: #34d399;
+    --secondary-dark: #10b981;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Vazirmatn', system-ui, sans-serif;
+    line-height: 1.75;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+#converter {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Result sections styling */
+#result,
+#steps,
+#mathSteps,
+#ipAnalysis,
+.accordion-content {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+/* Table styles update */
+.fancy-table {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.fancy-table th,
+.fancy-table td {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border);
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--bg-primary);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.footer-link:hover {
+    background: var(--bg-secondary);
+}
+
+.footer-link i {
+    font-size: 1.25rem;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    color: var(--text-secondary);
+    border-color: var(--border);
+}
+
+.copyright p {
+    margin: 0.5rem 0;
+}
+
+/* Quiz section styling */
+.quizContent {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #converter {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .footer-content ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Input styling */
+input[type="text"] {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+/* Button styling */
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Input Container */
+.input-container {
+    position: relative;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.input-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.fancy-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.fancy-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    outline: none;
+}
+
+/* Standardized Button Styles */
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    min-width: 120px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Quiz Section Improvements */
+.quizContent {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    margin-top: 1rem;
+}
+
+.quizContent input {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+    margin: 1rem 0;
+}
+
+.quizTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.quizResult,
+.quizResultBinary {
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+}
+
+.quizResult span,
+.quizResultBinary span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    background: var(--bg-primary);
+}
+
+/* Button Group Layout */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Material Icons in Buttons */
+.btn .material-icons {
+    font-size: 1.25rem;
+}
+
+/* Updated Quiz Section Styling */
+.quizContent {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-top: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.quiz-question {
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: var(--bg-primary);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+}
+
+#quiz,
+#quizBinary,
+#quizResult,
+#quizResultBinary {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+}
+
+.quizResult span,
+.quizResultBinary span {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+/* Update incorrect/correct colors for dark mode */
+[data-theme="dark"] .quizResult span[style*="color: green"],
+[data-theme="dark"] .quizResultBinary span[style*="color: green"] {
+    color: #4ade80 !important;
+}
+
+[data-theme="dark"] .quizResult span[style*="color: red"],
+[data-theme="dark"] .quizResultBinary span[style*="color: red"] {
+    color: #f87171 !important;
+}
+
+/* Updated title styling */
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Quiz Result Styling */
+.quiz-result-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+.result-indicator {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.result-indicator.correct {
+    background: var(--secondary);
+    color: white;
+}
+
+.result-indicator.incorrect {
+    background: #ef4444;
+    color: white;
+}
+
+/* IP Analysis Table Responsive Fix */
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+    .table-container table {
+        font-size: 0.875rem;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 0.5rem;
+        white-space: normal;
+    }
+
+    .input-container {
+        padding: 1rem;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .footer-content {
+        padding: 1rem;
+    }
+}
+
+/* Updated Footer Styling */
+footer {
+    margin-top: auto;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: var(--text-primary);
+}
+
+.footer-link {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.footer-link:hover {
+    background: var(--bg-secondary);
+}
+
+.copyright {
+    color: var(--text-secondary);
+    border-color: var(--border);
+}
+
+/* Updated theme toggle button positioning for mobile */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: auto;
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    /* Improve table scrolling on mobile */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+        display: block;
+    }
+
+    /* Adjust quiz result display on mobile */
+    .quiz-result-section {
+        margin: 1rem 0;
+        padding: 0.75rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .quizResult span,
+    .quizResultBinary span {
+        max-width: 100%;
+        display: block;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    /* Smaller footer icons and better spacing on mobile */
+    .footer-links {
+        gap: 1rem;
+    }
+
+    .footer-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .footer-link i {
+        font-size: 1rem;
+    }
+
+    /* Make quiz results consistent with their sections */
+    .result-indicator {
+        width: 100%;
+        margin: 0.5rem 0;
+        text-align: center;
+        padding: 0.75rem;
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+    }
+
+    /* Improve IP analysis table readability on mobile */
+    #ipAnalysis {
+        font-size: 0.75rem;
+    }
+
+    #ipAnalysis th,
+    #ipAnalysis td {
+        padding: 0.5rem 0.25rem;
+        min-width: 80px;
+    }
+
+    /* Ensure table headers stay visible while scrolling */
+    .table-container thead th {
+        position: sticky;
+        top: 0;
+        background: var(--bg-card);
+        z-index: 1;
+    }
+}
+
+/* Ensure consistent quiz result styling */
+.quiz-result-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.result-indicator {
+    margin: 0;
+    border-radius: 0;
+}
+
+.result-indicator.correct,
+.result-indicator.incorrect {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Updated accordion styling */
+.accordion-header {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: var(--bg-secondary);
+}
+
+.accordion-content {
+    width: 100%;
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.accordion-content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+/* Export Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: var(--bg-card);
+    margin: 15% auto;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    width: 80%;
+    max-width: 600px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+/* IPv6 Mode Switch */
+.mode-switch {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+/* Keyboard Shortcuts Help */
+.shortcuts-badge {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.shortcuts-modal table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.shortcuts-modal td {
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+}
