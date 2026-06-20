@@ -192,7 +192,7 @@ export function calculateSubnetDetails(ip: string, cidr: number): SubnetDetails 
   if (
     firstOctet === 10 ||
     (firstOctet === 172 && octets[1] >= 16 && octets[1] <= 31) ||
-    (firstOctet === 192 && octets[2] === 168)
+    (firstOctet === 192 && octets[1] === 168)
   ) {
     ipType = 'خصوصی (شبکه داخلی - RFC 1918)';
   }
