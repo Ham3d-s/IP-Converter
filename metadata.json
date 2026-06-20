@@ -1,0 +1,6 @@
+{
+  "name": "IP Plus Network Laboratory",
+  "description": "An interactive, highly modular laboratory for studying IPv4/v6 subnetting, live 32-bit flipper, binary conversions, math steps, gamified quizzes, and AI-driven VLSM architecture design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
