@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { SoundFX } from '@/lib/audio';
 import { Modal } from '@/components/Modal';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface AnalysisItem {
   id: string;
@@ -484,7 +485,7 @@ export default function NetworkAnalysis() {
           icon="help_outline"
         >
           <div
-            dangerouslySetInnerHTML={{ __html: selectedTutorial.helpBody }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectedTutorial.helpBody) }}
             className="space-y-3"
             id="html-modal-content-inject"
           />
