@@ -39,7 +39,7 @@ async function queryAI({
     });
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.5-flash',
+      model: 'gemini-2.5-flash',
       contents: promptText,
       config: {
         systemInstruction,
@@ -65,7 +65,7 @@ async function queryAI({
     });
 
     const response = await ai.models.generateContent({
-      model: customModelName || 'gemini-3.5-flash',
+      model: customModelName || 'gemini-2.5-flash',
       contents: promptText,
       config: {
         systemInstruction,
@@ -80,6 +80,23 @@ async function queryAI({
   let url = '';
   let resolvedModel = '';
 
+  // Prevent Server-Side Request Forgery (SSRF)
+  if (customBaseUrl) {
+    try {
+      const parsedUrl = new URL(customBaseUrl);
+      if (parsedUrl.protocol !== 'https:') {
+        throw new Error('Only HTTPS URLs are allowed for custom providers.');
+      }
+      const isLocalhost = ['localhost', '127.0.0.1', '::1'].includes(parsedUrl.hostname);
+      const isInternalIp = /^10\.|^169\.254\.|^192\.168\./.test(parsedUrl.hostname) || /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(parsedUrl.hostname);
+      if (isLocalhost || isInternalIp) {
+        throw new Error('Access to internal or private networks is restricted.');
+      }
+    } catch (err: any) {
+      throw new Error(`Invalid custom URL: ${err.message}`);
+    }
+  }
+
   if (provider === 'openai') {
     url = customBaseUrl || 'https://api.openai.com/v1';
     resolvedModel = customModelName || 'gpt-4o-mini';
@@ -90,13 +107,12 @@ async function queryAI({
     url = customBaseUrl || 'https://openrouter.ai/api/v1';
     resolvedModel = customModelName || 'meta-llama/llama-3-8b-instruct:free';
   } else if (provider === 'local') {
-    url = customBaseUrl || 'http://localhost:11434/v1';
-    resolvedModel = customModelName || 'llama3';
+    throw new Error('The local provider is disabled for security reasons.');
   } else {
     throw new Error(`ارائه‌دهنده نامعتبر یا پشتیبانی نشده است: ${provider}`);
   }
 
-  if (provider !== 'local' && !clientApiKey) {
+  if (!clientApiKey) {
     throw new Error(`کلید API برای ارائه‌دهنده ${provider} مشخص نشده است.`);
   }
 
@@ -346,8 +362,30 @@ Output the response strictly inside the requested JSON schema.`;
     return NextResponse.json({ error: `Unknown action: ${action}` }, { status: 400 });
   } catch (error: any) {
     console.error('Gemini API Router error:', error);
+    
+    let readableError = error?.message || 'یک خطای ناهماهنگ در برقراری ارتباط با پلتفرم هوش مصنوعی رخ داده است.';
+    
+    if (readableError.includes('ApiError')) {
+      try {
+        const match = readableError.match(/\{.*\}/);
+        if (match) {
+          const parsed = JSON.parse(match[0]);
+          if (parsed?.error?.message) {
+            readableError = parsed.error.message;
+            if (readableError.toLowerCase().includes('503') || readableError.toLowerCase().includes('demand') || readableError.toLowerCase().includes('overloaded')) {
+              readableError = 'ترافیک ورودی به هوش مصنوعی بسیار بالاست. لطفاً چند لحظه صبر کنید و دوباره تلاش کنید.';
+            }
+          }
+        }
+      } catch (e) {
+        // ignore JSON parse error
+      }
+    } else if (readableError.toLowerCase().includes('503') || readableError.toLowerCase().includes('demand')) {
+      readableError = 'ترافیک ورودی به هوش مصنوعی بسیار بالاست. لطفاً چند لحظه صبر کنید و دوباره تلاش کنید.';
+    }
+
     return NextResponse.json(
-      { error: error?.message || 'یک خطای ناهماهنگ در برقراری ارتباط با پلتفرم هوش مصنوعی رخ داده است.' },
+      { error: readableError },
       { status: 500 }
     );
   }

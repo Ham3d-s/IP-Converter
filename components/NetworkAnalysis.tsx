@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useIP } from '@/context/IPContext';
-import { calculateSubnetDetails, validateIPv4 } from '@/lib/ip-utils';
+import { calculateSubnetDetails, validateIPv4, validateIPv6 } from '@/lib/ip-utils';
 import {
   Layers,
   Shield,
@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { SoundFX } from '@/lib/audio';
 import { Modal } from '@/components/Modal';
+import DOMPurify from 'isomorphic-dompurify';
 
 interface AnalysisItem {
   id: string;
@@ -47,6 +48,10 @@ export default function NetworkAnalysis() {
   const handlePrintReport = () => {
     SoundFX.click();
     if (mode === 'ipv4' && !validateIPv4(ip)) {
+      alert('آدرس وارد شده برای چاپ گزارش معتبر نیست.');
+      return;
+    }
+    if (mode === 'ipv6' && !validateIPv6(ip)) {
       alert('آدرس وارد شده برای چاپ گزارش معتبر نیست.');
       return;
     }
@@ -484,7 +489,7 @@ export default function NetworkAnalysis() {
           icon="help_outline"
         >
           <div
-            dangerouslySetInnerHTML={{ __html: selectedTutorial.helpBody }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(selectedTutorial.helpBody) }}
             className="space-y-3"
             id="html-modal-content-inject"
           />

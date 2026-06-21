@@ -48,7 +48,7 @@ export default function IPInputPanel() {
         <div className={isMaximized ? 'w-full max-w-4xl space-y-6 mt-10' : 'space-y-4'}>
           {/* Header Action Row */}
           <div className="flex justify-between items-center mb-1 select-none">
-            <label className="text-xs font-bold text-slate-400 flex items-center gap-1.5" id="input-label-field">
+            <label htmlFor="ip-text-input" className="text-xs font-bold text-slate-400 flex items-center gap-1.5" id="input-label-field">
               <Edit2 className="w-4 h-4 text-indigo-400" />
               <span>یک آدرس IPv4 برای کالبدشکافی بنویسید:</span>
             </label>
@@ -59,6 +59,8 @@ export default function IPInputPanel() {
                 onClick={handleToggleMaximize}
                 className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
                 title={isMaximized ? 'کوچک‌نمایی' : 'تمام‌صفحه'}
+                aria-label={isMaximized ? 'کوچک‌نمایی' : 'تمام‌صفحه'}
+                aria-expanded={isMaximized}
                 id="maximize-ip-panel"
               >
                 {isMaximized ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -69,6 +71,7 @@ export default function IPInputPanel() {
                 onClick={() => { SoundFX.click(); setShowHelp(true); }}
                 className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
                 title="راهنمای کادر ورودی"
+                aria-label="راهنمای کادر ورودی"
                 id="help-ip-panel"
               >
                 <HelpCircle className="w-4 h-4" />
@@ -81,6 +84,8 @@ export default function IPInputPanel() {
                   isStarred ? 'text-amber-400' : 'text-slate-400 hover:text-white'
                 }`}
                 title={isStarred ? 'حذف از نشانک‌ها' : 'افزودن به نشانک‌ها'}
+                aria-label={isStarred ? 'حذف از نشانک‌ها' : 'افزودن به نشانک‌ها'}
+                aria-pressed={isStarred}
                 id="star-ip-panel"
               >
                 <Star className="w-4 h-4" fill={isStarred ? 'currentColor' : 'none'} />
