@@ -1,5 +1,6 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { NextRequest, NextResponse } from 'next/server';
+import dns from 'dns/promises';
 
 // Get default platform environmental key
 const defaultApiKey = process.env.GEMINI_API_KEY;
@@ -87,10 +88,39 @@ async function queryAI({
       if (parsedUrl.protocol !== 'https:') {
         throw new Error('Only HTTPS URLs are allowed for custom providers.');
       }
-      const isLocalhost = ['localhost', '127.0.0.1', '::1'].includes(parsedUrl.hostname);
-      const isInternalIp = /^10\.|^169\.254\.|^192\.168\./.test(parsedUrl.hostname) || /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(parsedUrl.hostname);
-      if (isLocalhost || isInternalIp) {
-        throw new Error('Access to internal or private networks is restricted.');
+
+      let hostname = parsedUrl.hostname;
+      hostname = hostname.replace(/^\[|\]$/g, '');
+
+      let addresses: string[] = [];
+      const isDirectIP = /^[0-9a-fA-F:\.]+$/.test(hostname);
+      if (isDirectIP) {
+        addresses.push(hostname);
+      } else {
+        try {
+          const records = await dns.lookup(hostname, { all: true });
+          addresses = records.map(r => r.address);
+        } catch (dnsErr) {
+          throw new Error(`DNS resolution failed for hostname: ${hostname}`);
+        }
+      }
+
+      if (addresses.length === 0) {
+        throw new Error(`Could not resolve hostname: ${hostname}`);
+      }
+
+      for (const address of addresses) {
+        const isLocalhost = ['127.0.0.1', '::1', '0.0.0.0', 'localhost'].includes(address) || address.startsWith('127.');
+        const isInternalIp = /^10\./.test(address) ||
+                            /^169\.254\./.test(address) ||
+                            /^192\.168\./.test(address) ||
+                            /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(address) ||
+                            /^fc00:/i.test(address) ||
+                            /^fe80:/i.test(address);
+
+        if (isLocalhost || isInternalIp) {
+          throw new Error('Access to internal or private networks is restricted.');
+        }
       }
     } catch (err: any) {
       throw new Error(`Invalid custom URL: ${err.message}`);
